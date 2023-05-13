@@ -8,22 +8,18 @@ import lombok.ToString;
 @Setter
 @ToString(callSuper = true)
 public class ElectronicBook extends Book {
+    public static final double BYTES_PER_PAGE_COUNT = 2048;
     private String format;
     private long fileSizeInBytes;
-    private static final int BYTES_PER_PAGE_COUNT = 2048;
 
     public ElectronicBook(String title, String author, String publisher, int year, String genre, String format, long fileSizeInBytes) {
-        setTitle(title);
-        setAuthor(author);
-        setPublisher(publisher);
-        setYear(year);
-        setGenre(genre);
-        setFormat(format);
-        setFileSizeInBytes(fileSizeInBytes);
+        super(title, author, publisher, year, genre);
+        this.format = format;
+        this.fileSizeInBytes = fileSizeInBytes;
     }
 
     @Override
     public int getPagesCount() {
-        return (int) (fileSizeInBytes / BYTES_PER_PAGE_COUNT);
+        return (int) Math.ceil((double) fileSizeInBytes / BYTES_PER_PAGE_COUNT); 
     }
 }
