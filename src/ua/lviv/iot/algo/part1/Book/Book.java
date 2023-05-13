@@ -21,7 +21,7 @@ public abstract class Book {
                 new PaperBook("To Kill a Mockingbird", "Harper Lee", "J. B. Lippincott & Co.", 1960, "Southern Gothic", 281, 130, 200)
         };
 
-        for (Book book : books) {
+        for (var book : books) {
             System.out.println(book);
         }
     }
